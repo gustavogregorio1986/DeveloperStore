@@ -12,5 +12,9 @@ namespace DeveloperStore.Service.Service.Interface
         Task<Venda> AdicionarVenda(Venda venda);
 
         Task<List<Venda>> ListarVendas();
+
+        Task<List<Venda>> ListarCancelados(int cancelar);
+
+        Task<List<Venda>> ListarNaocancelados(int naocancelar);
     }
 }

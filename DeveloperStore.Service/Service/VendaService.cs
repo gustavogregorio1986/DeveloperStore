@@ -23,6 +23,16 @@ namespace DeveloperStore.Service.Service
             return await _vendaRepository.AdicionarVenda(venda); 
         }
 
+        public async Task<List<Venda>> ListarCancelados(int cancelar)
+        {
+            return await _vendaRepository.ListarCancelados(cancelar);
+        }
+
+        public async Task<List<Venda>> ListarNaocancelados(int naocancelar)
+        {
+            return await _vendaRepository.ListarNaocancelados(naocancelar);
+        }
+
         public async Task<List<Venda>> ListarVendas()
         {
             return await _vendaRepository.ListarVendas();

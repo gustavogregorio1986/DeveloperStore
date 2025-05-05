@@ -13,6 +13,7 @@ namespace DeveloperStore.Data.AutoMapper
     {
         public VendaProfile()
         {
+            CreateMap<VendaDTO, Venda>();
             CreateMap<Venda, VendaDTO>();
         }
     }
