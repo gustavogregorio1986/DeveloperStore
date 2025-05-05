@@ -26,6 +26,18 @@ namespace DeveloperStore.Data.Repository
             return venda;
         }
 
+        public async Task AtualizarAsync(Venda venda)
+        {
+            _db.Vendas.Update(venda);
+            await _db.SaveChangesAsync();
+        }
+
+        public async Task DeletarAsync(Venda venda)
+        {
+            _db.Vendas.Remove(venda);
+            await _db.SaveChangesAsync();
+        }
+
         public async Task<List<Venda>> ListarCancelados(int cancelar)
         {
             return await _db.Vendas.Where(x => x.Status == 0).
@@ -41,6 +53,11 @@ namespace DeveloperStore.Data.Repository
         public async Task<List<Venda>> ListarVendas()
         {
             return await _db.Vendas.ToListAsync();
+        }
+
+        public async Task<Venda?> ObterPorIdAsync(Guid id)
+        {
+            return await _db.Vendas.FindAsync(id);
         }
     }
 }

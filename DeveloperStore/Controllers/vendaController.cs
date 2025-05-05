@@ -59,5 +59,45 @@ namespace DeveloperStore.Controllers
             return Ok(vendasDto);
         }
 
+        [HttpGet("ObterPorId/{id}")]
+        public async Task<IActionResult> ObterPorId(Guid id)
+        {
+            var venda = await _vendaService.ObterPorIdAsync(id);
+
+            if (venda == null)
+                return NotFound(new { mensagem = "Venda não encontrada" });
+
+            var vendaDto = _mapper.Map<VendaDTO>(venda);
+
+            return Ok(vendaDto);
+        }
+
+        [HttpPut("Editar/{id}")]
+        public async Task<IActionResult> Editar(Guid id, [FromBody] VendaDTO dto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var vendaExistente = await _vendaService.ObterPorIdAsync(id);
+            if (vendaExistente == null)
+                return NotFound("Venda não encontrada");
+
+            _mapper.Map(dto, vendaExistente);
+            await _vendaService.AtualizarAsync(vendaExistente);
+
+            return Ok(new { sucesso = true });
+        }
+
+        [HttpDelete("Deletar/{id}")]
+        public async Task<IActionResult> Deletar(Guid id)
+        {
+            var sucesso = await _vendaService.DeletarVendaAsync(id);
+            if (!sucesso)
+                return NotFound("Venda não encontrada");
+
+            return Ok(new { sucesso = true });
+        }
+
+
     }
 }

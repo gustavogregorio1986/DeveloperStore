@@ -16,5 +16,12 @@ namespace DeveloperStore.Data.Repository.Interface
         Task<List<Venda>> ListarCancelados(int cancelar);
 
         Task<List<Venda>> ListarNaocancelados(int naocancelar);
+
+        Task<Venda?> ObterPorIdAsync(Guid id);
+
+        Task AtualizarAsync(Venda venda);
+
+
+        Task DeletarAsync(Venda venda);
     }
 }

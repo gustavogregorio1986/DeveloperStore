@@ -16,5 +16,11 @@ namespace DeveloperStore.Service.Service.Interface
         Task<List<Venda>> ListarCancelados(int cancelar);
 
         Task<List<Venda>> ListarNaocancelados(int naocancelar);
+
+        Task<Venda?> ObterPorIdAsync(Guid id);
+
+        Task AtualizarAsync(Venda venda);
+
+        Task<bool> DeletarVendaAsync(Guid id);
     }
 }
