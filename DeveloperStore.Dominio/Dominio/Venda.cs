@@ -29,5 +29,7 @@ namespace DeveloperStore.Dominio.Dominio
         public double Desconto { get; set; }
 
         public double ValorTotalItem { get; set; }
+
+        public int Status { get; set; }
     }
 }

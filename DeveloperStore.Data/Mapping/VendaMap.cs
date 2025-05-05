@@ -56,6 +56,10 @@ namespace DeveloperStore.Data.Mapping
             builder.Property(x => x.Desconto)
                 .IsRequired()
                 .HasColumnType("double(10, 2)");
+
+            builder.Property(x => x.Status)
+                .IsRequired()
+                .HasColumnType("INT");
         }
     }
 }
